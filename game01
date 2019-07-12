@@ -1,0 +1,50 @@
+from time import sleep
+import random
+
+class Player():
+    hp = 100
+
+class Zombie():
+    hp = 20
+    damage = 1
+
+class Wave():
+    count_of_waves = 2
+    count_of_zombies = 3
+    exist_zombies = True
+
+class Guns():
+    def __init__(self, damage, firerate):
+        self.damage = damage
+        self.firerate = firerate
+
+class Shop():
+    money = 0
+    items = ['Пистолет', ]
+
+
+pistol = Guns(5, 1)
+uzi = Guns(10, 0.5)
+
+
+for NewZombie in range(Wave.count_of_waves):
+
+
+    for NewZombie in range(Wave.count_of_zombies):
+        NewZombie = Zombie()
+        print(f'Впереди зомби ({NewZombie.hp}). Стреляй!')
+        while Wave.exist_zombies:
+            sleep(uzi.firerate)
+            shoot = input('')
+            if shoot == '' or shoot.split() == ' ':
+                NewZombie.hp -= uzi.damage
+                print(f'Жизней: {NewZombie.hp}')
+                if NewZombie.hp <= 0:
+                    exist_zombies = False
+                    break
+                continue
+
+
+            print('Зомби умер')
+
+    NewZombie.hp += 10
